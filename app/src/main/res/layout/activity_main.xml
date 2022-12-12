@@ -67,7 +67,7 @@
             android:text="del"
             android:layout_margin="5dp"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="15dp"
             android:background="@drawable/keyboard_btn"
             android:onClick="ButtonClick"
 
@@ -313,7 +313,7 @@
             android:text="Ans"
             android:layout_margin="5dp"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="15dp"
             android:background="@drawable/keyboard_btn"
             android:onClick="ButtonClick"
 

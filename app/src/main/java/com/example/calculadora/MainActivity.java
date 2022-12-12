@@ -86,7 +86,7 @@ private String input,Answer;
             String number[] = input.split("\\*");
             try {
                 double mul = Double.parseDouble(number[0]) * Double.parseDouble(number[1]);
-                input += mul;
+                input = mul+"";
             } catch (Exception e) {
                 //Toggleerror
             }
@@ -95,16 +95,16 @@ private String input,Answer;
             String number[] = input.split("/");
             try {
                 double div = Double.parseDouble(number[0]) / Double.parseDouble(number[1]);
-                input += div;
+                input = div+"";
             } catch (Exception e) {
                 //Toggleerror
             }
 
-        } else if (input.split("^").length == 2) {
+        } else if (input.split("\\^").length == 2) {
             String number[] = input.split("\\^");
             try {
                 double pow = Math.pow(Double.parseDouble(number[0]), Double.parseDouble(number[1]));
-                input += pow;
+                input = pow+"";
             } catch (Exception e) {
                 //Toggleerror
             }
@@ -112,22 +112,26 @@ private String input,Answer;
             String number[] = input.split("\\+");
             try {
                 double sum = Double.parseDouble(number[0]) + Double.parseDouble(number[1]);
-                input += sum;
+                input = sum+"";
             } catch (Exception e) {
                 //Toggleerror
             }
-        } else if (input.split("-").length == 2) {
-            String number[] = input.split("\\-");
+        } else if (input.split("-").length > 1) {
+            String number[] = input.split("-");
             //to substract from negative number
             if (number[0] == "" && number.length == 2) {
                 number[0] = 0 + "";
             }
             try {
-                double sub = Double.parseDouble(number[0]) - Double.parseDouble(number[1]);
-                input += sub;
-            } catch (Exception e) {
-                //Toggleerror
-            }
+                double sub = 0;
+                if (number.length == 2) {
+                    sub = Double.parseDouble(number[0]) - Double.parseDouble(number[1]);
+                }
+                else if (number.length==3){
+                    sub = Double.parseDouble(number[1])-Double.parseDouble(number[2]);
+                }
+                    input = sub+"";
+            } catch (Exception e) {}
         }
         //to remove the last digit .0 from integer result
         String n[]=input.split("\\.");
