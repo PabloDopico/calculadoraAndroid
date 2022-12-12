@@ -19,6 +19,8 @@ private String input,Answer;
         setContentView(R.layout.activity_main);
         Screen=findViewById(R.id.screen);
 
+        //Asignamos todos los botones con sus respectivos id del XML
+
         AC=findViewById(R.id.ac);
         Power=findViewById(R.id.power);
         Back=findViewById(R.id.back);
@@ -41,19 +43,22 @@ private String input,Answer;
         Equal=findViewById(R.id.equal);
 
     }
-
+    //Indicamos lo que hará el programa al clickar sobre cada botón
     public void ButtonClick(View view){
         Button button =(Button) view;
         String data = button.getText().toString();
         switch (data){
+
             case"AC":
-                input="";
+                input=""; // AC borra el texto en pantalla
                 break;
+
             case"Ans":
-                input+=Answer;
+                input+=Answer; // Ans nos devuelve la respuesta anterior
                 break;
+
             case"*":
-                Solve();
+                Solve();  // llamamos al metodo Solve para resolver la operacion
                 input+="*";
                 break;
 
@@ -61,14 +66,17 @@ private String input,Answer;
                 Solve();
                 input+="^";
                 break;
+
             case"=":
                 Solve();
                 Answer =input;
                 break;
-            case"DEL":
-                String newText=input.substring(0,input.length()-1);
+
+            case"del":
+                String newText=input.substring(0,input.length()-1);  // la funcion
                 input = newText;
                 break;
+
             default:
                 if(input==null){
                     input="";
@@ -133,13 +141,12 @@ private String input,Answer;
                     input = sub+"";
             } catch (Exception e) {}
         }
-        //to remove the last digit .0 from integer result
+        //para quitar el .0 despues de un numero entero
         String n[]=input.split("\\.");
             if(n.length>1){
                 if(n[1].equals("0")){
                     input=n[0];
                 }
-
             }
             Screen.setText(input);
     }
