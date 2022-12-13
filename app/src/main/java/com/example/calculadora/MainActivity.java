@@ -46,7 +46,7 @@ private String input,Answer;
     //Indicamos lo que hará el programa al clickar sobre cada botón
     public void ButtonClick(View view){
         Button button =(Button) view;
-        String data = button.getText().toString();
+        String data = button.getText().toString(); //asignamos a la variable data el texto del boton
         switch (data){
 
             case"AC":
@@ -76,7 +76,7 @@ private String input,Answer;
                 break;
 
             case"del":
-                String newText=input.substring(0,input.length()-1);  // la funcion
+                String newText=input.substring(0,input.length()-1);  // borramos la ultima cifra tecleada
                 input = newText;
                 break;
 
@@ -84,7 +84,7 @@ private String input,Answer;
                 if(input==null){
                     input="";
                 }
-                if(data.equals("+")||data.equals("-")||data.equals("/")){
+                if(data.equals("+")||data.equals("-")||data.equals("/")){ // si pulsamos una de estas operaciones llamamos al metodo solve
                     solve();
                 }
                 input+=data;
@@ -93,7 +93,7 @@ private String input,Answer;
     }
 
     private void solve() {
-        if (input.split("\\*").length == 2) {
+        if (input.split("\\*").length == 2) { // si pulsamos *
             String number[] = input.split("\\*");
             try {
                 double mul = Double.parseDouble(number[0]) * Double.parseDouble(number[1]);
@@ -102,7 +102,7 @@ private String input,Answer;
                 //Toggleerror
             }
 
-        } else if (input.split("/").length == 2) {
+        } else if (input.split("/").length == 2) { // si pulsamos /
             String number[] = input.split("/");
             try {
                 double div = Double.parseDouble(number[0]) / Double.parseDouble(number[1]);
@@ -111,7 +111,7 @@ private String input,Answer;
                 //Toggleerror
             }
 
-        } else if (input.split("\\^").length == 2) {
+        } else if (input.split("\\^").length == 2) { // si pulsamos ^
             String number[] = input.split("\\^");
             try {
                 double pow = Math.pow(Double.parseDouble(number[0]), Double.parseDouble(number[1]));
@@ -119,7 +119,7 @@ private String input,Answer;
             } catch (Exception e) {
                 //Toggleerror
             }
-        } else if (input.split("\\+").length == 2) {
+        } else if (input.split("\\+").length == 2) { // si pulsamos +
             String number[] = input.split("\\+");
            try {
                 double sum = Double.parseDouble(number[0]) + Double.parseDouble(number[1]);
@@ -127,10 +127,10 @@ private String input,Answer;
             } catch (Exception e) {
                 //Toggleerror
             }
-        } else if (input.split("-").length > 1) {
+        } else if (input.split("-").length > 1) { // si pulsamos -
             String number[] = input.split("-");
             //to substract from negative number
-            if (number[0] == "" && number.length == 2) {
+            if (number[0] == "" && number.length == 2) { // si el numero es negativo
                 number[0] = 0 + "";
             }
             try {
@@ -147,12 +147,9 @@ private String input,Answer;
         //para quitar el .0 despues de un numero entero
         String n[]=input.split("\\.");
         if(n.length>1){
-
-            if(n[1].equals("0")){
+            if(n[1].equals("0")){ // si acaba en .0 escribimos unicamente lo que va antes del punto
                 input=n[0];
-            }else{
             }
-
         }
         Screen.setText(input);
     }
