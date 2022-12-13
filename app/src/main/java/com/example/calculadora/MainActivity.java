@@ -58,18 +58,21 @@ private String input,Answer;
                 break;
 
             case"*":
-                Solve();  // llamamos al metodo Solve para resolver la operacion
+                solve();  // llamamos al metodo Solve para resolver la operacion
                 input+="*";
                 break;
 
             case"^":
-                Solve();
+                solve();
                 input+="^";
                 break;
 
             case"=":
-                Solve();
+                solve();
                 Answer =input;
+                break;
+            case",":
+                input+=".";
                 break;
 
             case"del":
@@ -82,14 +85,14 @@ private String input,Answer;
                     input="";
                 }
                 if(data.equals("+")||data.equals("-")||data.equals("/")){
-                    Solve();
+                    solve();
                 }
                 input+=data;
         }
         Screen.setText(input);
     }
 
-    private void Solve() {
+    private void solve() {
         if (input.split("\\*").length == 2) {
             String number[] = input.split("\\*");
             try {
@@ -118,7 +121,7 @@ private String input,Answer;
             }
         } else if (input.split("\\+").length == 2) {
             String number[] = input.split("\\+");
-            try {
+           try {
                 double sum = Double.parseDouble(number[0]) + Double.parseDouble(number[1]);
                 input = sum+"";
             } catch (Exception e) {
@@ -143,11 +146,14 @@ private String input,Answer;
         }
         //para quitar el .0 despues de un numero entero
         String n[]=input.split("\\.");
-            if(n.length>1){
-                if(n[1].equals("0")){
-                    input=n[0];
-                }
+        if(n.length>1){
+
+            if(n[1].equals("0")){
+                input=n[0];
+            }else{
             }
-            Screen.setText(input);
+
+        }
+        Screen.setText(input);
     }
 }
