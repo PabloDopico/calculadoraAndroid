@@ -41,8 +41,8 @@ private String input,Answer;
         Point =findViewById(R.id.point);
         Ans=findViewById(R.id.ans);
         Equal=findViewById(R.id.equal);
-
     }
+
     //Indicamos lo que hará el programa al clickar sobre cada botón
     public void ButtonClick(View view){
         Button button =(Button) view;
@@ -89,7 +89,7 @@ private String input,Answer;
                 }
                 input+=data;
         }
-        Screen.setText(input);
+        Screen.setText(input); // añadimos el input al textview
     }
 
     private void solve() {
